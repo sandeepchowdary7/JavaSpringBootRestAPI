@@ -18,13 +18,21 @@ public class BookController {
     }
 
     @GetMapping("/book/{bookId}")
-    private Book getBooks(@PathVariable("bookId") int id) {
-        return bookService.getBookById(id);
+    private Object getBooks(@PathVariable("bookId") int id) {
+        try {
+            return bookService.getBookById(id);
+        } catch (Exception e) {
+            return "No Records Found with this id " + id;
+        }
     }
 
     @DeleteMapping("/book/{bookId}")
-    private void deleteBook(@PathVariable("bookId") int id) {
-        bookService.deleteBook(id);
+    private Object deleteBook(@PathVariable("bookId") int id) {
+        try {
+            return bookService.getBookById(id);
+        } catch (Exception e) {
+            return "No Records Found with this id " + id;
+        }
     }
 
     @PostMapping("/book")
